@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LoginUser</title>
+</head>
+<body>
+  <div id="container">
+    <div id="singin">
+        <h3 id="title"></h3>
+        <input type="email" id="email">
+        <input type="password" id="password">
+        <button onclick="login()">Register</button>
+    </div>
+    <div id="image_cover">
+        <img src="">lol
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    async function login() {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const {data} = await axios.post('http://localhost:5000/api/users/login', {email, password});
+        if(data){
+          location.href='http://127.0.0.1:5500/frontend/userDashboard.html'
+        } else {console.log('error')};
+    }
+</script>
+</body>
+</html>

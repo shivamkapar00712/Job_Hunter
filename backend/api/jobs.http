@@ -1,0 +1,27 @@
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmRmYjkxYzcyN2I0NmEyMWJmYWZkYjciLCJpYXQiOjE2NTg4MjkxMTV9.CMd6s27Lh_RMsRdQ4UREe3SzinygDONSLMdYTjrmpTw
+
+
+# browse all jobs
+GET http://localhost:5000/api/users/browseJobs
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+# browse particular job
+GET http://localhost:5000/api/users/browseJobs/62dfba48727b46a21bfafdbe
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+###
+
+# create new Job
+POST  http://localhost:5000/api/companys/createjob
+Content-Type: application/json
+Authorization: Bearer {{token}}
+{
+    "title": "DevOps",
+    "description": "Join Us urgent employment required!!!",
+    "duration": "9:00am-6:00pm",
+    "salary":6
+}
