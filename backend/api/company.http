@@ -1,0 +1,18 @@
+POST http://localhost:5000/api/companys/login
+Content-Type: application/json
+
+{
+    "email": "info@uber.com",
+    "password": "12345"
+}
+
+###
+
+POST http://localhost:5000/api/companys/register
+Content-Type: application/json
+
+{
+    "name":"Uber",
+    "email": "info@uber.com",
+    "password": "12345"
+}
