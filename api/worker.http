@@ -1,0 +1,13 @@
+
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmRmYjkxYzcyN2I0NmEyMWJmYWZkYjciLCJpYXQiOjE2NTg4MjkxMTV9.CMd6s27Lh_RMsRdQ4UREe3SzinygDONSLMdYTjrmpTw
+
+POST http://localhost:5000/api/companys/createjob
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+
+###
+GET http://localhost:5000/api/companys/createjob
+Content-Type: application/json
+Authorization: bearer {{token}}
