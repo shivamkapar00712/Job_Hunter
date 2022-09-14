@@ -14,6 +14,6 @@ require('./app/startup/routes')(app)
 app.get('/',(req,res)=>{
   res.send("welcome to app");
 });
-app.listen(process.env.PORT || 5000,()=>{
+app.listen(process.env.PORT || 5000,'0:0:0:0',()=>{
   winston.info(`listning to the port ${process.env.PORT || 5000}`)
 });
