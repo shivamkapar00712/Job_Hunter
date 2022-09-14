@@ -12,7 +12,7 @@ POST http://localhost:5000/api/companys/register
 Content-Type: application/json
 
 {
-    "name":"Uber",
-    "email": "info@uber.com",
+    "name":"shivam-Uber",
+    "email": "shivam@uber.com",
     "password": "12345"
 }

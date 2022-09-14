@@ -30,12 +30,16 @@ const userProfileSchema = new mongoose.Schema({
     type: Array,
   },
   diploma: {
-    type: Array,
+    type: String,
     maxlength: 255,
   },
   experience: {
-    type: Array,
+    type: String,
   },
+  appliedJobs: {
+    type: Array,
+    default:[]
+  }
 });
 
 module.exports.UserProfile = mongoose.model("userProfile", userProfileSchema);

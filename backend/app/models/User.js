@@ -3,7 +3,6 @@ const Joi = require("joi");
 const jwt = require("jsonwebtoken");
 
 const { JWT_SECRET } = process.env;
-
 const userSchema = new mongoose.Schema({
   name: {
     type: String,

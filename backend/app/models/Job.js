@@ -14,6 +14,10 @@ const jobSchema = new mongoose.Schema({
       maxlength:1024,
       default:'best Job'
     },
+    location:{
+      type:String,
+      required:true
+    },
     duration:{
       type:String,
       maxlength:255
@@ -21,6 +25,11 @@ const jobSchema = new mongoose.Schema({
     salary:{
       type:String,
       maxlength:10,
+    },
+    skillRequired:{
+      type:Array,
+      required:true,
+      default:[]
     },
     company:{
       _id:mongoose.Types.ObjectId,
@@ -31,6 +40,10 @@ const jobSchema = new mongoose.Schema({
       email:{
         type:String,
         required:true
+      },
+      isCompany:{
+        type:Boolean,
+        default:true
       },
       isPremium:{
         type:Boolean,

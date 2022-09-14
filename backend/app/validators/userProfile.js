@@ -3,14 +3,15 @@ const Joi = require('joi')
 
 exports.validateProfile = function(profile){
   return Joi.object({
+    user:Joi.object().required(),
     bio:Joi.string().max(1024),
     gender:Joi.string().required(),
-    dateOfBirth:Joi.string().required(),
-    mobileNumber:Joi.number().required().min(10).max(12),
+    dateOfBirth:Joi.date().iso().required(),
+    mobileNumber:Joi.number().required(),
     address:Joi.string().max(1024),
-    skill:Joi.array().required(),
-    diploma:Joi.array(),
-    experience:Joi.array()
+    skills:Joi.required(),
+    diploma:Joi.string(),
+    experience:Joi.string()
   }).validate(profile);
 }
 

@@ -23,16 +23,24 @@ const companySchema = new mongoose.Schema({
     minlength: 3,
     maxlength: 255,
   },
-  isPremium: {
-    type: Boolean,
-    default: false,
+  isPremium:{
+    type:Boolean,
+    default:false
   },
+  isCompany: {
+    type: Boolean,
+    default: true,
+  },
+  jobRequests:{
+    type: Array,
+    default:[]
+  }
 });
 
 companySchema.methods.generateToken = function () {
   return jwt.sign(
     {
-      _id: this._id
+      id: this._id
     },
     JWT_SECRET
   );

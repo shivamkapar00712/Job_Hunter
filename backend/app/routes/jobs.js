@@ -7,7 +7,7 @@ const auth = require('../middleware/auth');
 
 router.post('/companys/createjob',auth,createJob);
 
-router.get('/users/browseJobs',auth,browseJobs);
+router.get('/browseJobs',browseJobs);
 
 router.get('/users/browseJobs/:id',auth,selectedJob)
 module.exports = router;
