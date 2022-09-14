@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import {getJWT} from "./authService";
 
-axios.defaults.baseURL = "http://localhost:5000/api";
+axios.defaults.baseURL = "";
 function setJWT(jwt){
   axios.defaults.headers.common['authorization'] =jwt;
   axios.defaults.headers.common['Authorization'] =jwt;
