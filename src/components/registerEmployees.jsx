@@ -7,7 +7,7 @@ import Input from "./common/formInput";
 const handleSubmit = async (e,user,setUser) => {
   e.preventDefault();
   const result = await registerEmployee(user.name,user.email,user.password)
-  console.log(result)
+  
 }
  
 
@@ -24,16 +24,18 @@ const RegisterEmployees = () => {
   const [user,setUser] = useState({name:'',email:'',password:''});
 
   return (
-    <form onSubmit={(e)=>handleSubmit(e,user,setUser)} className="form w-50 m-auto">
-      <div className="row m-2">
-        <div className="col">
-          <Link className="btn btn-outline-primary form-control text-center" to='/register-employers'>Employers</Link>
-        </div>
-        <div className="col">
-          <Link className="btn btn-outline-primary form-control text-center" to='/register-employees'>Employees</Link>
+    <form onSubmit={(e)=>handleSubmit(e,user,setUser)} className="form w-50" style={{margin:'4vh auto'}}>
+      <div className="card">
+        <div className="row m-2">
+          <div className="col">
+            <Link className="btn btn-outline-primary form-control text-center" to='/register-employers'>Employers</Link>
+          </div>
+          <div className="col">
+            <Link className="btn btn-outline-primary form-control text-center" to='/register-employees'>Employees</Link>
+          </div>
         </div>
       </div>
-      <div className="container p-3">
+      <div className="container p-3 card">
       <div className="container m-2">
         <h2 className="text-center">Register As Employees</h2>
       </div>
@@ -65,7 +67,10 @@ const RegisterEmployees = () => {
         onChange={(e)=>handleChange(e,user,setUser)}
       />
     </div>
-    <button className="btn btn-outline-success w-75 m-auto" type="submit">Login</button>
+    <div className="container">
+
+    <button className="btn btn-outline-success form-control" type="submit">Register</button>
+    </div>
       <span className="m-3"></span>
     </form>
   );

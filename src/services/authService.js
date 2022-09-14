@@ -18,6 +18,9 @@ export async function login(email, password) {
     }
   }
 }
+
+
+
 export function logout(){
   localStorage.removeItem(tokenkey);
 }
@@ -35,7 +38,9 @@ export async function registerEmployee(name,email,password){
       password
     })
     toast.success(data);
+    toast.success('Register Successfully, Please Login again to continue');
     window.location.href = '/';
+    toast.success('Register Successfully, Please Login again to continue');
   }catch(ex){
     if (ex.response && ex.response.status === 400){
       toast.error(ex.response.data)
@@ -50,9 +55,9 @@ export async function registerEmployer(name,email,password){
       email,
       password
     })
-    toast.success(data);
-    console.log(data)
+    toast.success('Register Successfully, Please Login again to continue');
     window.location.href = '/';
+    toast.success('Register Successfully, Please Login again to continue');
   }catch(ex){
     if (ex.response && ex.response.status === 400){
       toast.error(ex.response.data)
