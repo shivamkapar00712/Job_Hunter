@@ -1,31 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import Job from './common/job';
-import { getAllJobs } from '../services/jobService';
+import React, { useEffect, useState, memo } from "react";
+import Job from "./common/job";
 
-
-const handleSelectedJob = (e) =>{
-  e.preventDefault();
-  console.log(e);
-}
-
-const JobTable = () => {
-  const [jobs, setJobs] = useState(null);
-  useEffect(()=>{
-    getAllJobs().then(result =>setJobs(result));
-  },[])
-  console.log(jobs)
-  return ( 
+const JobTable = ({ jobs, filter }) => {
+  const { location } = filter;
+  let filteredJobs;
+  if (location) {
+    filteredJobs = jobs.filter((job) => job.location === location);
+  } else {
+    filteredJobs = jobs;
+  }
+  console.log(location,filter)
+  return (
     <React.Fragment>
-      {jobs &&
-        jobs.map(job => (
-          <Job 
-          key={job._id}
-          job={job}
-          />
-        ))
-      }
+      {jobs && filteredJobs.map((job) => <Job key={job._id} job={job} />)}
     </React.Fragment>
-   );
-}
- 
+  );
+};
+
 export default JobTable;

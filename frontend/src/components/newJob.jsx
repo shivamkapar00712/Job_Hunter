@@ -3,7 +3,8 @@ import { useState } from "react";
 import { createJob } from "../services/jobService";
 import InputGroup from "./common/InputGroup";
 import Skills from "./common/skills";
-
+import '../css/userProfile.css'
+import { Link } from "react-router-dom";
 const handleSubmit = async (e,job) => {
   e.preventDefault();
   try{
@@ -40,8 +41,8 @@ const NewJob = () => {
   });
   const [errors, setErrors] = useState(null);
   return (
-    <form className="container" onSubmit={e=>handleSubmit(e,job)}>
-      <div className="m-5 card">
+    <form className="profile-container" onSubmit={e=>handleSubmit(e,job)}>
+      <div className="profile-body">
         <div className="container m-2">
           <h3 className="text-center">Create New Job</h3>
         </div>
@@ -104,7 +105,7 @@ const NewJob = () => {
             <button className="btn btn-success form-control">Sumbit</button>
           </div>
           <div className="col-4">
-            <button className="btn btn-outline-danger form-control">Cancel</button>
+            <Link className="btn btn-outline-danger form-control" to='/'>Cancel</Link>
           </div>
         </div>
       </div>

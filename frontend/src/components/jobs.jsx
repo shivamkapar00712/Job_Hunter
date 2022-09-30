@@ -2,97 +2,70 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { getAllJobs } from "../services/jobService";
+import FilterMenu from "./common/filter";
 import SearchMenu from "./common/search";
 import JobTable from "./jobTable";
-
-
+import "../css/job.css";
+const handleJobSearch = (e, jobs, setSearchFilter) => {
+  e.preventDefault();
+  const { currentTarget: input } = e;
+  const alljobs = [...jobs];
+  setSearchFilter(
+    alljobs.filter(
+      (job) =>
+        job.title.toLowerCase().includes(input.value) ||
+        job.company.name.toLowerCase().includes(input.value) ||
+        job.location.toLowerCase().includes(input.value)
+    )
+  );
+  console.log(alljobs);
+};
 
 const Jobs = () => {
-
+  const [jobs, setJobs] = useState(null);
+  const [filter, setFilter] = useState(null);
+  const [searchFilter, setSearchFilter] = useState(null);
+  console.log(filter);
+  useEffect(() => {
+    getAllJobs().then((result) => setJobs(result));
+  }, []);
   return (
-    <React.Fragment>
-      <div className="container">
-        <div className="container m-4 ">
-          <SearchMenu />
-        </div>
-      </div>
+    <div className="background-job p-4">
+      {window.innerWidth <= 700 && (
+        <FilterMenu
+          style="m-3"
+          jobs={jobs}
+          handleFilter={(Filter) => setFilter(Filter)}
+        />
+      )}
+
       <div className="row">
-        <div className="col-3 container">
-          <ul className="list-group">
-            <li className="list-group-item dropdown-center">
-              <button
-                className="form-control dropdown-toggle"
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Location
-              </button>
-              <ul className="dropdown-menu">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Action
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li className="list-group-item dropdown-center">
-              <button
-                className="form-control dropdown-toggle"
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Experirence
-              </button>
-              <ul className="dropdown-menu">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    0 yr - 1 yr
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li className="list-group-item dropdown-center">
-              <button
-                className="form-control dropdown-toggle"
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Timing
-              </button>
-              <ul className="dropdown-menu">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Full Time
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Morning Shift
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    after noon Shift
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Work From Home
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <div className="col-7">
-          <JobTable />
+        {window.innerWidth > 700 && (
+          <FilterMenu
+            style="col-3"
+            jobs={jobs}
+            handleFilter={(Filter) => setFilter(Filter)}
+          />
+        )}
+        <div
+          className={
+            window.innerWidth > 700
+              ? "col-7 container job-container"
+              : "container job-container"
+          }
+        >
+          <div className="container">
+            <div className="container m-4 ">
+              <SearchMenu
+                handleSubmit={(e) => handleJobSearch(e, jobs, setSearchFilter)}
+              />
+            </div>
+          </div>
+          <JobTable jobs={searchFilter || jobs} filter={{ ...filter }} />
         </div>
         <div className="col"></div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

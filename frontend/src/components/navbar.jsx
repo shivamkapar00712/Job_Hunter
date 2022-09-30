@@ -3,6 +3,9 @@ import logo from "../images/companyLogo.png";
 import "../css/logo.css";
 import { Link } from "react-router-dom";
 import { findUser, getCurrentUser } from "../services/authService";
+import Search from "./common/basicSearch";
+import '../css/navbar.css';
+
 
 const getUserWithJWT = async (setUser) => {
   findUser(getCurrentUser()).then((result) => setUser(result));
@@ -16,7 +19,7 @@ const Navbar = () => {
 
   console.log(user);
   return (
-    <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark">
       <div className="container">
         <div className="container-fluid">
           <img src={logo} className="navbar-brand logo"></img>
@@ -80,8 +83,11 @@ const Navbar = () => {
                 </ul>
               </li>
             </ul>
+            {/* <form className="" role="search">
+              <Search /> 
+            </form> */}
             {!user && (
-              <Link className="btn btn-outline-success m-2" to="/login">
+              <Link className="btn login-btn btn-outline-success m-2" to="/login">
                 Login
               </Link>
             )}
@@ -116,17 +122,7 @@ const Navbar = () => {
                 </ul>
               </div>
             )}
-            <form className="d-flex" role="search">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
+
             {user && (
               <div className="m-3 dropdown text-end">
                 <a

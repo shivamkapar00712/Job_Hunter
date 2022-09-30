@@ -1,19 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { requestJob } from "../../services/companyService";
 import { applyJob } from "../../services/jobService";
 import { getUserProfile } from "../../services/profileService";
 
 
-const isApplied = (id,appliedJobs) =>{
-  if(!appliedJobs) return
-
-  for(let jobId of appliedJobs){
-    if(jobId === id) return true
-  }
-  return false
-}
-
-const handleChange = async (profile,job)=>{
+const handleChange = async (profile,job,isApplied)=>{
   try{
     const applied = isApplied(job._id,profile.appliedJobs)
     if(applied) return console.log('already Applied');
@@ -29,46 +20,18 @@ const handleChange = async (profile,job)=>{
   }
 }
 
-async function getUserWithJWT(profile, setProfile) {
-  getUserProfile().then((result) => {
-    const demoProfile = { ...profile };
-    for (let item in result){
-      demoProfile[item] = result[item];
-    }
-    return setProfile(demoProfile);
-  });
-}
+
 
 
 const JobModal = ({
   toggleID,
   label_ID,
   job,
-  isCompany
+  isCompany,
+  profile,
+  isApplied
 }) => {
   const { title, description, location, salary, duration: timing,_id: id } = job;
-  const [profile, setProfile] = useState(
-    {
-    user: {
-      name: "",
-      email: "",
-    },
-    bio: "",
-    gender: "",
-    dateOfBirth: "",
-    mobileNumber: 0,
-    address: "",
-    skills: [],
-    diploma: '',
-    experience: '',
-    appliedJobs:[]
-  }
-  );
-
-  useEffect(() => {
-    getUserWithJWT(profile, setProfile);
-  }, []);
-
   return (
     <div
       className="modal fade"
@@ -145,7 +108,7 @@ const JobModal = ({
             >
               Close
             </button>
-            {!isCompany && (<button type="button" disabled={isApplied(job._id,profile.appliedJobs)} onClick={()=>handleChange(profile,job)} className="btn btn-success">
+            {!isCompany && (<button type="button" disabled={isApplied(job._id,profile.appliedJobs)} onClick={()=>handleChange(profile,job,isApplied)} className="btn btn-success">
               {
                 isApplied(job._id,profile.appliedJobs) && `Already Applied`
               }

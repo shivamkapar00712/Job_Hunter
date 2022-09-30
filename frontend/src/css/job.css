@@ -1,0 +1,40 @@
+.job-card{
+  color: rgb(0, 0, 100,0.8);
+  background-color: rgb(255, 255, 255,0.7);
+  box-shadow: 5px 5px 10px 10px black;
+  transition: all 0.3s ease-out;
+}
+.job-card:hover{
+  background-color: white;
+}
+
+.job-container{
+  background-color: rgb(122, 122, 122,0.4);
+  padding:2%;
+  box-shadow: 5px 5px 10px 10px black;
+}
+
+.background-job{
+  background-image:linear-gradient(rgb(1, 1, 7),rgb(65, 1, 148));
+  height: 200vh;
+}
+
+.filter-control{
+  width: 90%;
+  height: 5vh;
+  border: 1px solid grey;
+  margin:2% auto;
+  list-style: none;
+  box-sizing: border-box;
+}
+.filter-control button{
+  background-color: rgb(255, 255, 255, 0.7);
+  
+  color: rgb(0, 0, 100,0.8);
+}
+
+.list-group{
+  box-shadow: 5px 5px 10px 10px black;
+  margin:auto;
+  width:90%
+}
