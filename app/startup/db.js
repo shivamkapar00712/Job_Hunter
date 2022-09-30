@@ -5,7 +5,7 @@ const {DB_URL} = process.env;
 
 
 module.exports = function (){
-  mongoose.connect("mongodb://127.0.0.1:27017/test1")
+  mongoose.connect(DB_URL)
       .then(() => console.log('successfull connected to the database'))
       .catch(err => {
        console.log(err)
