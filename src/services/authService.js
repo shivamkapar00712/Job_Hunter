@@ -70,7 +70,7 @@ export async function registerEmployer(name,email,password){
 export async function findUser(id){
   try{
     const result = await httpServices.get(`/users/${id}`)
-    console.log(result)
+
     return result.data;
   }catch(ex){
     if (ex.response && ex.response.status === 400){
@@ -94,6 +94,6 @@ export async function getAllCompanies(){
 export function getCurrentUser(){
   const token = localStorage.getItem(tokenkey);
   const result = jwtDecode(token);
-  console.log(result)
+
   return result.id
 }

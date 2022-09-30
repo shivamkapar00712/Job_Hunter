@@ -1,7 +1,8 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-axios.defaults.baseURL = "https://jobhunter-app-back.herokuapp.com/api";
+axios.defaults.baseURL = "http://localhost:5000/api";
+
 function setJWT(jwt){
   axios.defaults.headers.common['authorization'] =jwt;
   axios.defaults.headers.common['Authorization'] =jwt;

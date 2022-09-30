@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { getCompanyByJWT, rejectJobReq } from "../services/companyService";
-
+import '../css/userProfile.css'
 const handleReject = async (e,company,setCompany) =>{
   const companys = {...company}
   const oldCompanyValue = {...company}
@@ -42,23 +42,25 @@ const JobRequests = () => {
     getCompanyByJWT().then((result) => setCompany(result));
   }, []);
   return (
-    <div className="container card w-75" style={{ margin: "3vh auto" }}>
-      <div className="container m-3">
-        <h2 className="text-center">Job Requested by users</h2>
-      </div>
-      {company && company.jobRequests.map((req) => (
-        <div key={req.user.user._id} id={req.user.user._id} className=" card m-4 p-3">
-          <h3>{req.user.user.name} has requested for {req.job.title} job</h3>
-          <div className="row d-flex justify-content-end">
-            <div className="col-9 d-flex justify-content-end">
-              <button onClick={(e)=>handleReject(e,company,setCompany)} name={req.user.user._id} className="btn btn-outline-danger">Reject</button>
-            </div>
-            <div className="col d-flex justify-content-start">
-              <button onClick={(e)=>handleAccept(e,company,setCompany)} className="btn btn-primary">Call Now</button>
+    <div className="profile-container" style={{height:'100vh'}}>
+      <div className="container profile-body" style={{ margin: "3vh auto" }}>
+        <div className="container">
+          <h2 className="text-center">Job Requested by users</h2>
+        </div>
+        {company && company.jobRequests.map((req) => (
+          <div key={req.user.user._id} id={req.user.user._id} className="top" style={{color:'goldenrod'}}>
+            <h5>{req.user.user.name} has requested for {req.job.title} job</h5>
+            <div className="row d-flex justify-content-end">
+              <div className="col-9 d-flex justify-content-end">
+                <button onClick={(e)=>handleReject(e,company,setCompany)} name={req.user.user._id} className="btn btn-outline-danger">Reject</button>
+              </div>
+              <div className="col d-flex justify-content-start">
+                <button onClick={(e)=>handleAccept(e,company,setCompany)} className="btn btn-primary">Call</button>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

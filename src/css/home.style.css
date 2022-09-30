@@ -1,0 +1,114 @@
+.home-container{
+  background-image:linear-gradient(rgb(1, 1, 7),rgb(65, 1, 148));
+  padding:2vh;
+  height: 100vh;
+  transition: all 1s;
+}
+.header{
+  margin: 15vh auto;
+}
+.header h1{
+  color:rgb(255, 194, 38);
+  box-sizing: border-box;
+  padding:20px;
+  animation: Pop 2s;
+}
+hr{
+  color:rgb(255, 194, 38);
+  box-sizing: border-box;
+  animation: Pop 2s;
+}
+.header p{
+  color:rgb(255, 194, 38);
+  box-sizing: border-box;
+  animation: Pop 2s;
+}
+.header h1:hover{
+}
+@keyframes Pop {
+  from {
+    transform: scale(1.2);
+    filter: blur(4px);
+  }
+  to{
+    transform: scale(1);
+  }
+}
+
+.searchMenu{
+  width:50%;
+  margin:auto;
+  animation: Pop 2s;
+  transition: all 1s;
+  box-shadow: 5px 5px 5px 5px rgba(41, 41, 41, 0.329);
+}
+.searchMenu:hover{
+  width:60%;
+  box-shadow: 2px 2px 5px 5px black;
+}
+.services{
+  background-color: black;
+  color:white;
+  padding: 3vh 0;
+}
+.services:hover{
+  
+  background-color: rgb(0, 0, 0,0.8);
+  position:absolute;
+  width: 100%;
+  transition: all 1s;
+  border-radius: 30px;
+  height:75vh;
+  transform: translate(0px,-600px);
+}
+.services .ad-container{
+  display:none;
+}
+.services:hover .ad-container{
+  display: flex;
+}
+
+.ad-container{
+  margin:2vh auto;
+  display: flex;
+  width:70%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.ad-card{
+  background-color: rgb(53, 124, 255,0.3);
+  box-sizing: border-box;
+  border-radius: 1vh;
+  height: 120px;
+  width: 30%;
+  transition: all 1s;
+  animation: Pop 2s;
+}
+.ad-card:hover{
+  background-color: rgb(53, 124, 255,0.8);
+  animation: teethring 0.8s;
+  
+
+}
+@keyframes teethring {
+  0%{
+    transform: scale(1) ;
+  }
+  25%{
+    transform: scale(1.2);
+    
+  }
+  50%{
+    transform: scale(0.8)
+
+  }
+  75%{
+    transform:  scale(1.1);
+    
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+

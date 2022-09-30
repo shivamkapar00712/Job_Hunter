@@ -23,8 +23,24 @@ const getUserWithJWT = async (setUser) => {
 
 const App = () => {
   const [user, setUser] = useState(null);
+  const [dimensions, setDimensions] = React.useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
   useEffect(() => {
     getUserWithJWT(setUser);
+    function handleResize() {
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth,
+      });
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return (_) => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
   return (
     <React.Fragment>

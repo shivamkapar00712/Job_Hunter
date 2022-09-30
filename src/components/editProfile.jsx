@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getUserProfile, setUserProfile } from "../services/profileService";
 import Input from "./common/formInput";
+import '../css/userProfile.css'
 
 const handleChange = (e, profile, setProfile) => {
   const { currentTarget: input } = e;
@@ -71,12 +72,12 @@ const EditProfile = () => {
   }, []);
 
   return (
-    <div className="container">
-      <form className="form card p-5" onSubmit={e=>handleSubmit(e,profile,setProfile)}>
-        <div className="container">
+    <div className=" profile-container">
+      <form className="form" onSubmit={e=>handleSubmit(e,profile,setProfile)}>
+        <div className="container profile-edit-title">
           <h3 className="text-center">Edit Your Profile</h3>
         </div>
-        <div className=" m-4">
+        <div className="profile-body text-dark">
           <Input
             type="text"
             id="name"

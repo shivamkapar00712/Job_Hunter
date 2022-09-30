@@ -1,0 +1,79 @@
+.profile-container{
+  background-image:linear-gradient(rgb(1, 1, 7),rgb(65, 1, 148));
+  padding:5vh;
+  height: 100%;
+  transition: all 1s;
+  color:gold;
+}
+.top{
+  background-image:linear-gradient(rgb(0, 0, 90),rgb(65, 1, 148));
+  border-radius: 5vh;
+  color:gold;
+  padding:2vh;
+  width:50vw;
+  border: 5px solid rgb(0, 0, 0,0.5);
+  margin:auto;
+  position: relative;
+  z-index: 5;
+}
+.back{
+  background-image:linear-gradient(rgb(0, 0, 90),rgb(1, 126, 148));
+  position: relative;
+  z-index: 1;
+  width:50vw;
+  height: 25vh;
+  top:-200px;
+  left:27%;
+
+}
+
+
+.userDP{
+  height:100%;
+  width: 35%;
+  margin:auto;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.user{
+  font-size: 15vh;
+  margin:auto;
+  position: relative;
+}
+.profile-body{
+  background-color: rgb(65, 65, 65,0.3);
+  border-radius: 20px;
+  padding:2vh;
+  width:50vw;
+  margin:auto;
+  transition: all 1s;
+}
+.profile-body:hover{
+  transform: scale(1.05);
+}
+.profile-edit-title{
+  background-image:linear-gradient(rgb(0, 0, 90),rgb(65, 1, 148));
+  border-radius: 10vh;
+  color:gold;
+  padding:2vh;
+  width:50vw;
+  border: 5px solid rgb(0, 0, 0,0.5);
+  margin:2rem;
+  position: relative;
+  z-index: 5;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .profile-body{
+    width:100%
+  }
+  .top{
+    width:75vw;
+  }
+  .back{
+    top:15%;
+    left:15%;
+  }
+}
